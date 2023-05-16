@@ -32,12 +32,13 @@ public class Store {
         return shirts.size();
     }
 
-    public boolean authorizeCreditCard(String accountNumber, double amount) {
-        //placeholder method to test workflow
-        //since this would normally communicate with a external source
-        //this method should take longer to execute...
-
-        //TODO add delaying code here
+    public boolean authorizeCreditCard(String accountNumber, double amount) {int seconds = (int) (Math.random() * 3 + 1);
+        System.out.println("Sleeping for " + seconds + " seconds");
+        try {
+            Thread.sleep (seconds * 1000);
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted");
+        }
         
         return true;
     }
