@@ -1,5 +1,6 @@
 package org.example.Sincronized;
 
+
 public class SynchronizedMain {
 
     public static void main(String[] args) {
