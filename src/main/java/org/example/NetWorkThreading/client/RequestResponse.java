@@ -12,10 +12,11 @@ public class RequestResponse {
         this.host = host;
         this.port = port;
     }
-
+// Método equals para comparar dos objetos RequestResponse
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof RequestResponse) {
+            // Se realiza un cast del objeto a RequestResponse
             RequestResponse lookup = (RequestResponse) obj;
             if (host.equals(lookup.host) && port == lookup.port) {
                 return true;
@@ -23,7 +24,7 @@ public class RequestResponse {
         }
         return false;
     }
-
+// Método hashCode para generar un código hash único para cada objeto RequestResponse
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.host);

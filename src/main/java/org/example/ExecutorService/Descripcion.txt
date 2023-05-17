@@ -1,2 +1,136 @@
 Pagina del PDF 189- Capitulo 13 pagina 3
 Opcional Practica 13-1 Uso del paqute java,util.concurrent
+
+
+---------------------------------Clase Price RangeServer
+
+En resumen, la clase PriceRangeServer crea un servidor que acepta conexiones
+de socket y envía un precio aleatorio a los clientes que se conectan. Proporciona
+un retraso artificial antes de enviar el precio y verifica periódicamente si el
+hilo ha sido interrumpido mediante una excepción de tiempo de espera.
+
+---------------------------------Clase NetworkService
+
+La clase `NetworkServerMain` es la clase principal que contiene el método
+`main()` y se encarga de iniciar y controlar el servidor de red. Aquí está el
+ resumen de lo que hace la clase:
+
+1. En el método `main()`, se crea un `ExecutorService` utilizando
+`Executors.newCachedThreadPool()`. Este `ExecutorService` es responsable
+de administrar y ejecutar los hilos de ejecución para los servidores de rango de precios.
+
+2. Se crea una lista llamada `runners` para almacenar objetos `Runnable` (en este caso,
+ objetos `PriceRangeServer`).
+
+3. Se ejecuta un bucle para crear múltiples objetos `PriceRangeServer`
+  en diferentes puertos. Cada objeto se crea con un rango de precios de 20 a
+  110. Si ocurre una excepción de `IOException` al crear un `PriceRangeServer`,
+  se imprime un mensaje indicando que el puerto ya está en uso.
+
+4. Cada objeto `PriceRangeServer` creado se agrega a la lista `runners`.
+
+5. Se ejecuta otro bucle para ejecutar cada objeto `Runnable` en el
+ `ExecutorService` utilizando el método `exSrv.execute(r)`.
+
+6. Después de ejecutar los objetos `Runnable`, hay una pausa de 500 milisegundos.
+
+7. Se muestra un mensaje en la consola para indicar al usuario que presione Enter para salir.
+
+8. Se espera la entrada del usuario (presionar Enter).
+
+9. Una vez que se recibe la entrada del usuario, se muestra un mensaje indicando que
+se está terminando la ejecución.
+
+10. Se llama al método `exSrv.shutdownNow()` para finalizar la ejecución del
+ `ExecutorService` y detener todos los hilos asociados.
+
+En resumen, la clase `NetworkServerMain` crea y ejecuta múltiples servidores de
+ rango de precios (`PriceRangeServer`) en hilos separados utilizando un `ExecutorService`.
+ Permite al usuario controlar el momento de finalización de la ejecución del programa al
+ presionar Enter, y se encarga de finalizar correctamente los hilos y liberar los recursos
+ utilizados por el `ExecutorService`.
+
+---------------------------------Clase RequestResponse
+
+La clase `RequestResponse` representa una solicitud y respuesta
+ en el contexto de una comunicación cliente-servidor. Aquí está
+ el resumen de lo que hace la clase:
+
+1. La clase tiene tres atributos: `host` (para almacenar el host de la solicitud)
+, `port` (para almacenar el puerto de la solicitud) y `response` (para almacenar
+la respuesta recibida).
+
+2. El constructor `RequestResponse` se utiliza para crear un objeto
+ `RequestResponse` con el host y el puerto proporcionados.
+
+3. El método `equals()` se sobrescribe para comparar dos objetos `RequestResponse`.
+ Compara si el host y el puerto son iguales en ambos objetos. Si el objeto pasado
+ como parámetro es una instancia de `RequestResponse` y tiene el mismo host y puerto,
+  se considera que son iguales y devuelve `true`. De lo contrario, devuelve `false`.
+
+4. El método `hashCode()` se sobrescribe para generar un código hash único para
+ cada objeto `RequestResponse`. Utiliza el host y el puerto para generar el código
+  hash utilizando el algoritmo de generación de código hash proporcionado. Esto garantiza
+   que objetos `RequestResponse` con el mismo host y puerto tengan el mismo código hash.
+
+En resumen, la clase `RequestResponse` se utiliza para representar una solicitud y
+ respuesta en una comunicación cliente-servidor. Proporciona métodos para comparar objetos
+  `RequestResponse` y generar códigos hash únicos para cada objeto, lo que facilita su uso
+  en estructuras de datos que requieren comparación y búsqueda eficientes.
+
+ ---------------------------------Clase NetworkClient Main
+
+La clase `NetworkClientMain` es la clase principal que contiene el método
+`main()`, y se encarga de realizar
+ solicitudes a un servidor en diferentes puertos utilizando sockets. Aquí está el
+  resumen de lo que hace la clase:
+
+1. En el método `main()`, se define el host como "localhost".
+
+2. Se ejecuta un bucle para realizar solicitudes en diferentes puertos, del 10000 al 10010.
+
+3. En cada iteración del bucle, se crea un objeto `RequestResponse` con el host y puerto actuales.
+
+4. Se establece una conexión `Socket` con el host y puerto especificados utilizando el objeto
+ `RequestResponse`.
+
+5. Se crea un `Scanner` utilizando el flujo de entrada del `Socket` para leer la respuesta
+ del servidor.
+
+6. Se lee la respuesta utilizando el `Scanner` y se asigna al atributo `response`
+del objeto `RequestResponse`.
+
+7. Se muestra en la consola el host, puerto y respuesta recibida del servidor.
+
+8. Si ocurre una excepción de `NoSuchElementException` o `IOException` al comunicarse
+con el servidor, se muestra un mensaje de error indicando que hubo un problema al hablar
+ con el host y puerto correspondientes.
+
+En resumen, la clase `NetworkClientMain` se encarga de realizar solicitudes a un servidor
+ en diferentes puertos utilizando sockets y mostrar las respuestas recibidas en la consola.
+ Es un cliente simple que interactúa con el servidor y muestra los resultados de cada solicitud.
+
+ --------------------------Clase SingleThreadClient Main
+
+ La clase `SingleThreadClientMain` es la clase principal que contiene el método `main()`, y se encarga
+ de realizar solicitudes a un servidor en diferentes puertos utilizando sockets en un entorno de
+  ejecución de un solo hilo. Aquí está el resumen de lo que hace la clase:
+
+ 1. En el método `main()`, se define el host como "localhost".
+
+ 2. Se ejecuta un bucle para realizar solicitudes en diferentes puertos, del 10000 al 10010.
+
+ 3. En cada iteración del bucle, se crea un objeto `RequestResponse` con el host y puerto actuales.
+
+ 4. Se establece una conexión `Socket` con el host y puerto especificados utilizando el objeto `RequestResponse`.
+
+ 5. Se crea un `Scanner` utilizando el flujo de entrada del `Socket` para leer la respuesta del servidor.
+
+ 6. Se lee la respuesta utilizando el `Scanner` y se asigna al atributo `response` del objeto `RequestResponse`.
+
+ 7. Se muestra en la consola el host, puerto y respuesta recibida del servidor.
+
+ 8. Si ocurre una excepción de `NoSuchElementException` o `IOException` al comunicarse con el servidor,
+ se muestra un mensaje de error indicando que hubo un problema al hablar con el host y puerto correspondientes.
+
+ En resumen, la clase `SingleThreadClientMain` es responsable de realizar solicitudes secuenciales a un servidor en diferentes puertos utilizando sockets. Cada respuesta recibida se almacena en un objeto `RequestResponse` y se muestra en la consola junto con el host y puerto correspondientes. Es un cliente de un solo hilo, lo que significa que las solicitudes se procesan de forma secuencial en lugar de paralela o concurrente.

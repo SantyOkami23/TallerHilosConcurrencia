@@ -9,8 +9,12 @@ import java.util.concurrent.Executors;
 public class NetworkServerMain {
 
     public static void main(String[] args) {
+        // Crea un ExecutorService con un conjunto de hilos de ejecución en caché.
         ExecutorService exSrv = Executors.newCachedThreadPool();
+        // Crea una lista para almacenar los objetos Runnable (PriceRangeServer) que se crearán.
         List<Runnable> runners = new ArrayList<>();
+
+        // Crea varios objetos PriceRangeServer en diferentes puertos y los agrega a la lista de runners.
         for (int port = 10000; port < 10010; port++) {
             Runnable r;
             try {
@@ -20,10 +24,11 @@ public class NetworkServerMain {
                 System.out.println("Port " + port + " already in use");
             }
         }
+        // Ejecuta cada objeto Runnable en el ExecutorService.
         for (Runnable r : runners) {
             exSrv.execute(r);
         }
-
+        // Pausa de 500 milisegundos antes de continuar.
         try {
             Thread.sleep(500);
         } catch (InterruptedException ex) {
@@ -33,6 +38,7 @@ public class NetworkServerMain {
             System.in.read();
         } catch (IOException ex) {
         }
+        // Finaliza la ejecución del ExecutorService.
         System.out.println("Quiting...");
         exSrv.shutdownNow();
 

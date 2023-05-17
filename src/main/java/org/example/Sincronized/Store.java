@@ -5,6 +5,8 @@ import java.util.LinkedList;
 
 public class Store {
 
+    // Se crea un constructor que recibe un objeto RequestResponse
+
     private Deque<Shirt> shirts = new LinkedList<>();
     //singleton
     private static Store instance = new Store();

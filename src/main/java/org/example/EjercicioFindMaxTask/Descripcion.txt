@@ -1,2 +1,41 @@
 Pagina del PDF 191- Capitulo 13 pagina 5
 Opcional Practica 13-2 Uso del marco ForkJoin
+
+Clase FindMaxTask
+
+En resumen, esta implementación divide recursivamente el
+arreglo en subarreglos más pequeños hasta que el tamaño
+de cada subarreglo sea menor que un umbral dado. Luego,
+encuentra el máximo valor en cada subarreglo y finalmente
+combina los resultados para encontrar el máximo valor en el
+arreglo original. Esta tarea se realiza de manera paralela utilizando
+la clase RecursiveTask del paquete java.util.concurrent.*/
+
+Clase RandomArrayAction
+
+Este código implementa una tarea recursiva que genera
+aleatoriamente los valores de un arreglo de enteros. Al
+igual que el código anterior, utiliza la clase RecursiveAction del paquete
+java.util.concurrent para realizar la tarea de manera paralela.
+
+La tarea se divide en subarreglos más pequeños hasta que el
+tamaño de cada subarreglo sea menor que un umbral dado. En cada
+subarreglo, se generan aleatoriamente los valores utilizando
+ThreadLocalRandom.current().nextInt(). Si el tamaño del subarreglo
+es mayor o igual al umbral, se divide en dos subarreglos y se invoca
+de forma paralela el cálculo en cada subarreglo mediante el método invokeAll().
+Esto permite que los subarreglos se procesen simultáneamente en hilos separados,
+lo que acelera el proceso de generación aleatoria del arreglo completo.*/
+
+
+Clase Main
+
+En este código, se realiza lo siguiente:
+1. Se crea un arreglo llamado data con un tamaño de 512MB.
+2. Se crea una instancia de ForkJoinPool, que es un conjunto de hilos de ejecución que se utilizarán para realizar tareas de manera paralela.
+3. Se crea una instancia de RandomArrayAction para generar los valores aleatorios en el arreglo data. Se pasa el arreglo, el índice de inicio y fin del subarreglo, y el umbral para dividir el trabajo en tareas más pequeñas.
+4. Se invoca la tarea action en el pool utilizando el método invoke(), lo que genera aleatoriamente los valores en el arreglo de forma paralela.
+5. Se crea una instancia de FindMaxTask para encontrar el valor máximo en el arreglo data. Se pasan los mismos parámetros que en la tarea action.
+6. Se invoca la tarea task en el pool utilizando el método invoke(), lo que encuentra el máximo valor en el arreglo de forma paralela.
+Finalmente, se muestra en la consola el resultado del valor máximo encontrado.
+En resumen, este código utiliza el framework Fork/Join (Fork/Join Framework) para generar aleatoriamente los valores de un arreglo y luego encontrar el valor máximo en ese arreglo de manera paralela, aprovechando múltiples hilos de ejecución.

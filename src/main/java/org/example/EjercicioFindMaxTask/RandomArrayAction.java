@@ -17,11 +17,13 @@ public class RandomArrayAction extends RecursiveAction {
     }
 
     protected void compute() {
+        // Si el tamaño del subarreglo es menor que el umbral establecido, se genera aleatoriamente
         if (end - start < threshold) {
             for (int i = start; i <= end; i++) {
                 myArray[i] = ThreadLocalRandom.current().nextInt();
             }
         } else {
+            // Si el tamaño del subarreglo es mayor o igual al umbral, se divide en dos subarreglos
             int midway = (end - start) / 2 + start;
             RandomArrayAction r1 = new RandomArrayAction(myArray, start, midway, threshold);
             RandomArrayAction r2 = new RandomArrayAction(myArray, midway + 1, end, threshold);           

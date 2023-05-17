@@ -1,7 +1,7 @@
 package org.example.Sincronized;
 
 public class Shirt{
-
+// Se crea un constructor que recibe un objeto RequestResponse
     private String id = "";
     private String description = "";
     private String color = "";

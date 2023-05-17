@@ -2,6 +2,7 @@ package org.example.EjercicioFindMaxTask;
 
 import java.util.concurrent.RecursiveTask;
 
+
 public class FindMaxTask extends RecursiveTask<Integer> {
     private final int threshold;
     private final int[] myArray;
@@ -15,7 +16,10 @@ public class FindMaxTask extends RecursiveTask<Integer> {
         this.end = end;
     }
 
+    // El método compute() es el punto de entrada de la tarea recursiva
     protected Integer compute() {
+
+        // Si el tamaño del subarreglo es menor que el umbral establecido, se procesa de forma secuencial
         if (end - start < threshold) {
             int max = Integer.MIN_VALUE;
             for (int i = start; i <= end; i++) {
@@ -26,10 +30,13 @@ public class FindMaxTask extends RecursiveTask<Integer> {
             }
             return max;
         } else {
+            // Si el tamaño del subarreglo es mayor o igual al umbral, se divide en dos subarreglos
             int midway = (end - start) / 2 + start;
             FindMaxTask a1 = new FindMaxTask(myArray, start, midway, threshold);
             a1.fork();
             FindMaxTask a2 = new FindMaxTask(myArray, midway + 1, end, threshold);
+
+            // Se llama a compute() de forma recursiva en a2 (en el hilo actual)
             return Math.max(a2.compute(), a1.join());
         }
     }
