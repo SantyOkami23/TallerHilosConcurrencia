@@ -3,5 +3,3 @@ Nivel detallado: Implantación de un programa - Practica 12-2
 
 Creara un proyecto que imprima de forma lenta un numero en aumento, se utilizara un nuevo thread para
 aumentar e imprimir el numero. La aplicacion debe esperar a que se pulse Intro para interrumpir los hilos
-
---Este sobra

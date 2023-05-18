@@ -133,4 +133,12 @@ En resumen, la clase `NetworkClientMain` se encarga de realizar solicitudes a un
  8. Si ocurre una excepción de `NoSuchElementException` o `IOException` al comunicarse con el servidor,
  se muestra un mensaje de error indicando que hubo un problema al hablar con el host y puerto correspondientes.
 
- En resumen, la clase `SingleThreadClientMain` es responsable de realizar solicitudes secuenciales a un servidor en diferentes puertos utilizando sockets. Cada respuesta recibida se almacena en un objeto `RequestResponse` y se muestra en la consola junto con el host y puerto correspondientes. Es un cliente de un solo hilo, lo que significa que las solicitudes se procesan de forma secuencial en lugar de paralela o concurrente.
+ En resumen, la clase `SingleThreadClientMain` es responsable de realizar solicitudes secuenciales a un servidor
+  en diferentes puertos utilizando sockets. Cada respuesta recibida se almacena en un objeto `RequestResponse` y se
+  muestra en la consola junto con el host y puerto correspondientes. Es un cliente de un solo hilo, lo que significa que las
+  solicitudes se procesan de forma secuencial en lugar de paralela o concurrente.
+
+  ----------------------------Super resumen
+
+  Creara un cliente de red multi-hilo que leera rapidamente el precio de una camisa de varios servidores, En lugar de tener
+  que crear manualemnte threads utilizara el ele,ento Excutor service

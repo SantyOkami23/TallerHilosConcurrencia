@@ -1,5 +1,4 @@
 package org.example.Sincronized;
-
 public class PurchasingAgent {
 // Se crea un constructor que recibe un objeto RequestResponse
     public PurchasingAgent() {
@@ -14,7 +13,7 @@ public class PurchasingAgent {
         synchronized (store) {
             // Se crea un objeto Store y se sincroniza el acceso a él
             if (store.getShirtCount() > 0 && store.authorizeCreditCard("1234", 15.00)) {
-               // Se comprueba si hay camisetas disponibles y si la tarjeta de crédito es válida
+               // Se comprueba si hay camisetas disponibles y si la tarjeta de crédito es válida.
                 Shirt shirt = store.takeShirt();
                 System.out.println("The shirt is ours!");
                 System.out.println(shirt);

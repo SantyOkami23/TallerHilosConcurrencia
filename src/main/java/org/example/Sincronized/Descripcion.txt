@@ -1,2 +1,5 @@
 Pagina del PDF 178- Capitulo 12 pagina 6
 Sincronizacion de acceso a datos compartidos - Practica 12-1
+
+--SUper resumen abrira un poryecto en el que se adquieren camisas de una tienda, se le proporcionara el codigo de lectura de archvups, su taraa es agregar
+el codigo de manejo de excepciones

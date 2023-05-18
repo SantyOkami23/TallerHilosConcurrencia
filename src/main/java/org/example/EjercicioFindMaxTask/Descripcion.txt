@@ -32,10 +32,21 @@ Clase Main
 
 En este código, se realiza lo siguiente:
 1. Se crea un arreglo llamado data con un tamaño de 512MB.
-2. Se crea una instancia de ForkJoinPool, que es un conjunto de hilos de ejecución que se utilizarán para realizar tareas de manera paralela.
-3. Se crea una instancia de RandomArrayAction para generar los valores aleatorios en el arreglo data. Se pasa el arreglo, el índice de inicio y fin del subarreglo, y el umbral para dividir el trabajo en tareas más pequeñas.
+2. Se crea una instancia de ForkJoinPool, que es un conjunto de hilos de ejecución que se utilizarán para realizar tareas de manera paralela.0
+3. Se crea una instancia de RandomArrayAction para generar los valores aleatorios en el arreglo data. Se pasa el arreglo, el índice de inicio
+y fin del subarreglo, y el umbral para dividir el trabajo en tareas más pequeñas.
 4. Se invoca la tarea action en el pool utilizando el método invoke(), lo que genera aleatoriamente los valores en el arreglo de forma paralela.
 5. Se crea una instancia de FindMaxTask para encontrar el valor máximo en el arreglo data. Se pasan los mismos parámetros que en la tarea action.
 6. Se invoca la tarea task en el pool utilizando el método invoke(), lo que encuentra el máximo valor en el arreglo de forma paralela.
 Finalmente, se muestra en la consola el resultado del valor máximo encontrado.
-En resumen, este código utiliza el framework Fork/Join (Fork/Join Framework) para generar aleatoriamente los valores de un arreglo y luego encontrar el valor máximo en ese arreglo de manera paralela, aprovechando múltiples hilos de ejecución.
+En resumen, este código utiliza el framework Fork/Join (Fork/Join Framework) para generar aleatoriamente los valores de un arreglo y luego encontrar el valor máximo
+ en ese arreglo de manera paralela, aprovechando múltiples hilos de ejecución.
+
+
+
+ ------------------Super resumen
+
+ Se le proporcionara un proyecto existente en el que ya se usa el marco Fork Join para procesar
+ los datos obtenidos en una matriz antes de procesar la matriz inicializa con numero aleatorios actualmente tiene un unico
+ thread, Debe usar el marco Fork join para inciailziar la matriz con numeros aleatorios
+
